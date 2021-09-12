@@ -1,9 +1,37 @@
 .App {
+  width: 100vw;
+  height: 100vh;
   text-align: center;
+  background-color: rgb(255, 118, 118);
 }
 
 .box{
   width: 100px;
   height: 100px;
-  background-color: red;
+  color: white;
+}
+
+.tile{
+  height: 100px;
+  width: 100px;
+  background: lightseagreen;
+  margin: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+}
+
+.tile.win{
+  background: rgb(255, 0, 0);
+}
+
+.tile>div{
+  transform: translateY(-10%);
+}
+
+.tile-container{
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: auto auto auto;
 }
