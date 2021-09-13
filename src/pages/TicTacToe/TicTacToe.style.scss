@@ -1,0 +1,48 @@
+.box{
+    color: white;
+    display: flex;
+  }
+.player{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+  .tile{
+    height: 100px;
+    width: 100px;
+    background: lightseagreen;
+    margin: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+  }
+  
+  .tile.win{
+    background: rgb(255, 0, 0);
+  }
+  
+  .tile>div{
+    transform: translateY(-10%);
+  }
+  
+  .tile-container{
+    padding: 20px;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: auto auto auto;
+  }
+
+  .ttt-container{
+    display: flex;
+    flex-direction: column;
+  }
+  .share-code{
+      color: grey;
+      background-color: white;
+      text-align: center;
+      margin: 10px 10px;
+      border-radius: 10px;
+      padding: 5px;
+  }

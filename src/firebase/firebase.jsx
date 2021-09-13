@@ -46,20 +46,19 @@ let winList = []
     game = 'draw'
     winList = []
     console.log(data);
-    data.map(data =>{
-      if(data === ''){
-        return game = 'on'
-      }
-    })
+    data.map(data => data === ''? game = 'on' : null )
     console.log(data[0],data[1],data[2])
     //check rows
-    if((data[0] === data[1] && data[1] === data[2]) && data[1] != '') winList =  [0,1,2]
-    if((data[3] === data[4] && data[4] === data[5]) && data[4] != '') winList =  [3,4,5]
-    if((data[6] === data[7] && data[7] === data[8]) && data[7] != '') winList =  [6,7,8]
+    if((data[0] === data[1] && data[1] === data[2]) && data[1] !=='') winList =  [0,1,2]
+    if((data[3] === data[4] && data[4] === data[5]) && data[4] !=='') winList =  [3,4,5]
+    if((data[6] === data[7] && data[7] === data[8]) && data[7] !=='') winList =  [6,7,8]
     //check column
-    if((data[0] === data[3] && data[3] === data[6]) && data[3] != '') winList =  [0,3,6]
-    if((data[1] === data[4] && data[4] === data[7]) && data[4] != '') winList =  [1,4,7]
-    if((data[2] === data[5] && data[5] === data[8]) && data[5] != '') winList =  [2,5,8]
+    if((data[0] === data[3] && data[3] === data[6]) && data[3] !=='') winList =  [0,3,6]
+    if((data[1] === data[4] && data[4] === data[7]) && data[4] !=='') winList =  [1,4,7]
+    if((data[2] === data[5] && data[5] === data[8]) && data[5] !=='') winList =  [2,5,8]
+    //check cross
+    if((data[0] === data[4] && data[4] === data[8]) && data[4] !=='') winList =  [0,4,8]
+    if((data[3] === data[4] && data[4] === data[6]) && data[4] !=='') winList =  [3,4,6]
 
     console.log(winList);
     if(game === 'draw'){
