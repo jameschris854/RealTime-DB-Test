@@ -23,8 +23,13 @@
     background: rgb(255, 0, 0);
   }
   
-  .tile>div{
-    transform: translateY(-10%);
+  .tile{
+      .div{
+          transform: translateY(-10%);
+      }
+    &:hover{
+        scale: 1.1;
+    }
   }
   
   .tile-container{

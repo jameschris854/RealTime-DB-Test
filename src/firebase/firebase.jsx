@@ -133,7 +133,7 @@ let winList = []
   }
 
   export const removeGame = async(db,query,id) => {
-    console.log(db,query,id);
+    console.log(query,id);
    let removeRef = await remove(ref(db,query+'/'+id))
    console.log(removeRef);
   }

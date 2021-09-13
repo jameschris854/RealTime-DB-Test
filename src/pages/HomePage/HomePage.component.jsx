@@ -1,14 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import "./HomePage.styles.scss";
 
 const HomePage = () => {
   const [inputId, setInputId] = useState("");
-  const [name, setName] = useState("");
+  const [name, setName] = useState(""); 
+  const [name2, setName2] = useState(""); 
+  const [roomId,setRoomId] = useState()
   let history = useHistory();
 
+  useEffect(() => {
+    let id = localStorage.getItem('roomId')
+    setRoomId(id)
+    if(id) return alert('An instance of game is already running on this browser')
+  },[])
+
   const handleJoinGame = () => {
-    history.push("/game/:" + inputId);
+    history.push("/game/:" + inputId,{name:name2});
   };
 
   const handleText = (val) => {
@@ -30,8 +38,9 @@ const HomePage = () => {
           </div>
           <div className="label">Create Game</div>
           <div>
-            <button>
-              <Link
+            <button style={{cursor: roomId? "not-allowed": "allowed"}}>
+              <Link 
+              style={{pointerEvents: roomId? 'none' :'auto'}}
                 to={{
                   pathname: `/game`,
                   state: { name: name },
@@ -47,8 +56,8 @@ const HomePage = () => {
           <div className="label">Enter Name</div>
           <input
             type="text"
-            onChange={(e) => setName(e.target.value)}
-            value={name}
+            onChange={(e) => setName2(e.target.value)}
+            value={name2}
           />
           <div className="label">Enter Code</div>
           <input

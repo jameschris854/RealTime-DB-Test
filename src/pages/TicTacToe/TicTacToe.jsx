@@ -36,19 +36,28 @@ const TicTacToe = () => {
   let history = useHistory();
   let location = useLocation();
 
-    
+  useEffect(() => {
+    if(!joinId){
+        if(!roomId || roomId === '') return newGame()
+        setPlayer(1)
+    }else{
+        setRoomId(joinId.split(':')[1])
+        handleJoinGame(joinId.split(':')[1])
+        setPlayer(2)
+    }
+    getIp()
+    },[])
+
+    useEffect(() => {
+        return async () => {
+          let id = localStorage.getItem('roomId')
+          localStorage.clear('roomId')
+          console.log("cleaned up",id,'aasda');
+        };
+      }, []);
 
   useEffect(() => {
-    if (!joinId) {
-        if (!roomId || roomId === "") return newGame();
-        setPlayer(1);
-      } else {
-        setRoomId(joinId.split(":")[1]);
-        handleJoinGame(joinId.split(":")[1]);
-        setPlayer(2);
-      }
-      getIp();
-      console.log("component did mount");
+    console.log("component did mount");
     console.log(roomId);
     if (!roomId) return;
     console.log(data, "aaaaaaaaa");
@@ -57,7 +66,6 @@ const TicTacToe = () => {
     setSessionData(val);
     setGameData(val.data);
     (() => (gameStatus === "draw" ? alert("game draw") : null))();
-    getIp();
   }, [data, gameStatus, winList, roomId,joinId]);
 
   //creating function to load ip address from the API
@@ -76,6 +84,7 @@ const TicTacToe = () => {
     setRoomId(roomId);
     newGameInit(db, "tictactoe", roomId, ip, name);
     setPlayer(1);
+    localStorage.setItem('roomId',roomId)
   };
 
   const resetGameHandler = async () => {
@@ -83,14 +92,16 @@ const TicTacToe = () => {
   };
 
   const handleJoinGame = async (id) => {
+    let name = location.state ? location.state.name : "er";
     console.log(id);
     let ip = await getIp();
-    joinGame(db, "tictactoe/" + roomId, id, ip, "player2");
+    joinGame(db, "tictactoe/" + roomId, id, ip,name);
     setRoomId(id);
   };
 
-  const quitGame = () => {
-    removeGame(db, "tictactoe", roomId);
+  const quitGame = (id) => {
+      console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaa');
+    removeGame(db, "tictactoe", id);
     history.push("/");
   };
 
@@ -130,7 +141,7 @@ const TicTacToe = () => {
               {sessionData && sessionData.player2 && sessionData.player2.name}
             </div>
           </div>
-          <button onClick={() => quitGame()}>quit</button>
+          <button onClick={() => quitGame(roomId)}>quit</button>
           <button onClick={() => resetGameHandler()}>reset</button>
           <div className='share-code'>{window.location.host}/game/:{roomId}</div>
         </div>
