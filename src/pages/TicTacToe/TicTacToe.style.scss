@@ -1,53 +1,62 @@
-.box{
-    color: white;
-    display: flex;
-  }
-.player{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+.box {
+  color: white;
+  display: flex;
 }
-  .tile{
-    height: 100px;
-    width: 100px;
-    background: lightseagreen;
-    margin: 1px;
+.player {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 25%;
+}
+.tile {
+  height: 100px;
+  width: 100px;
+  background: lightseagreen;
+  margin: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+}
+
+.tile.win {
+  background: rgb(255, 0, 0);
+}
+
+.tile {
+    font-family: "Rock Salt", cursive;
+    box-shadow: 1px 0px 7px 0px #ff6c6c;
+  &:hover {
+   transform: scale(1.1);
+  }
+  .div {
+    transform: translateY(-10%);
+  }
+}
+
+.tile-container {
+    width: 75%;
+  padding: 20px;
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: auto auto auto;
+}
+
+.ttt-container {
+  display: flex;
+  flex-direction: column;
+  .game-controls {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 60px;
   }
-  
-  .tile.win{
-    background: rgb(255, 0, 0);
-  }
-  
-  .tile{
-      .div{
-          transform: translateY(-10%);
-      }
-    &:hover{
-        scale: 1.1;
-    }
-  }
-  
-  .tile-container{
-    padding: 20px;
-    display: grid;
-    grid-auto-flow: row;
-    grid-template-columns: auto auto auto;
-  }
-
-  .ttt-container{
-    display: flex;
-    flex-direction: column;
-  }
-  .share-code{
-      color: grey;
-      background-color: white;
-      text-align: center;
-      margin: 10px 10px;
-      border-radius: 10px;
-      padding: 5px;
-  }
+}
+.share-code {
+  color: grey;
+  background-color: white;
+  text-align: center;
+  margin: 10px 10px;
+  border-radius: 10px;
+  padding: 5px;
+}

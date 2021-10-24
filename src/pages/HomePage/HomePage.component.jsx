@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import "./HomePage.styles.scss";
 
@@ -6,17 +6,11 @@ const HomePage = () => {
   const [inputId, setInputId] = useState("");
   const [name, setName] = useState(""); 
   const [name2, setName2] = useState(""); 
-  const [roomId,setRoomId] = useState()
+  const [roomId] = useState()
   let history = useHistory();
 
-  useEffect(() => {
-    let id = localStorage.getItem('roomId')
-    setRoomId(id)
-    if(id) return alert('An instance of game is already running on this browser')
-  },[])
-
   const handleJoinGame = () => {
-    history.push("/game/:" + inputId,{name:name2});
+    history.push("/game/:" + inputId,{name:name2,fromHome:true});
   };
 
   const handleText = (val) => {
@@ -38,7 +32,7 @@ const HomePage = () => {
           </div>
           <div className="label">Create Game</div>
           <div>
-            <button style={{cursor: roomId? "not-allowed": "allowed"}}>
+            <button >
               <Link 
               style={{pointerEvents: roomId? 'none' :'auto'}}
                 to={{

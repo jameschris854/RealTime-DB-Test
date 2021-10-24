@@ -42,45 +42,51 @@ let winList = []
     checkGameRule(updatedData,db,query)
   }
 
+  const checkWinCondition = (a,b,c,dbData) => {
+    console.log(dbData,'db');
+      if(a === b && b === c && b !== '') {
+        update(ref(dbData.db,dbData.query),{
+          gameStatus:"over",
+          winList:[a,b,c]
+        })
+      }
+    }
+
   const checkGameRule = (data,db,query) => {
     game = 'draw'
     winList = []
+    let dbData = {db:db,query:query}
     console.log(data);
     data.map(data => data === ''? game = 'on' : null )
     console.log(data[0],data[1],data[2])
+    console.log(dbData,'eeeeeeeeeeeeeeeeeeeeeeee');
     //check rows
-    if((data[0] === data[1] && data[1] === data[2]) && data[1] !=='') winList =  [0,1,2]
-    if((data[3] === data[4] && data[4] === data[5]) && data[4] !=='') winList =  [3,4,5]
-    if((data[6] === data[7] && data[7] === data[8]) && data[7] !=='') winList =  [6,7,8]
+    winList = checkWinCondition(data[0],data[1],data[2],dbData)
+    winList = checkWinCondition(data[3],data[4],data[5],dbData)
+    winList = checkWinCondition(data[6],data[7],data[8],dbData)
     //check column
-    if((data[0] === data[3] && data[3] === data[6]) && data[3] !=='') winList =  [0,3,6]
-    if((data[1] === data[4] && data[4] === data[7]) && data[4] !=='') winList =  [1,4,7]
-    if((data[2] === data[5] && data[5] === data[8]) && data[5] !=='') winList =  [2,5,8]
+    winList = checkWinCondition(data[0],data[3],data[6],dbData)
+    winList = checkWinCondition(data[1],data[3],data[7],dbData)
+    winList = checkWinCondition(data[2],data[5],data[8],dbData)
     //check cross
-    if((data[0] === data[4] && data[4] === data[8]) && data[4] !=='') winList =  [0,4,8]
-    if((data[3] === data[4] && data[4] === data[6]) && data[4] !=='') winList =  [3,4,6]
-
+    winList = checkWinCondition(data[0],data[4],data[8],dbData)
+    winList = checkWinCondition(data[3],data[4],data[6],dbData)
     console.log(winList);
     if(game === 'draw'){
       console.log('asdasdasd');
       update(ref(db,query),{
         gameStatus:"draw"
       })
-    }else if(winList.length >0 ){
-      update(ref(db,query),{
-        gameStatus:"over",
-        winList:winList
-      })
     }
   }
 
-  export const newGameInit = async(db,query,id,ip,name) => {
+  export const newGameInit = async(db,query,id,name) => {
     console.log(name);
     if(!name) name = 'player2'
     set(ref(db,query+'/'+id),{
        id:id,
        player1:{
-         ip:ip,
+         ip:'',
          name:name,
          isActive:true
        },
@@ -104,7 +110,7 @@ let winList = []
        }
     })
   }  
-  export const resetGame = async(db,query,id,ip) => {
+  export const resetGame = async(db,query,id) => {
     update(ref(db,query+'/'+id),{
        gameStatus:'on',
        winList:[''],
@@ -122,12 +128,12 @@ let winList = []
     })
   }  
 
-  export const joinGame = async(db,query,id,ip,name) => {
-    console.log(ip);
+  export const joinGame = async(db,query,id,name) => {
     update(ref(db,query+'/'+id),{
       player2:{
-        ip:ip,
-        name:name
+        ip:'',
+        name:name,
+        isActive:true
       }
     })
   }
@@ -136,6 +142,33 @@ let winList = []
     console.log(query,id);
    let removeRef = await remove(ref(db,query+'/'+id))
    console.log(removeRef);
+  }
+
+  export const leaveGame = async(db,query,id,player) => {
+    update(ref(db,query+'/'+id),{
+      [`player${player}`]:{
+        ip:'',
+        name: player === 2 ? 'Waiting for player...' : '',
+        isActive:false
+      },
+      gameStatus:player === 2 ? 'on' : 'hostLeft',
+       winList:[''],
+       data:{
+         0:'',
+         1:'',
+         2:'',
+         3:'',
+         4:'',
+         5:'',
+         6:'',
+         7:'',
+         8:'',
+       }
+    })
+
+    update(ref(db,query+'/player1'),{
+      isActive : true
+    })
   }
 
 export default firebase;
