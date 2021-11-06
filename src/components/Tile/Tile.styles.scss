@@ -1,0 +1,48 @@
+.tile-container
+ {
+    width: 75%;
+  padding: 20px;
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: auto auto auto;
+
+    //  width: 75%;
+    // display: grid;
+    // grid-auto-flow: row;
+    // grid-template-columns: auto auto auto;
+
+    .tile {
+      // border-rad ius: 20px;
+      height: 100px;
+      width: 100px;
+      background: rgb(48, 48, 48);
+      margin: 1px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 60px;
+      font-family: "Rock Salt", cursive;
+    &:hover {
+     transform: scale(1.1);
+    }
+    .div {
+      transform: translateY(-10%);
+    }
+    .win {
+      background: rgb(255, 0, 0);
+    }
+
+
+    // border-radius: 14px;
+    // height: 100px;
+    // width: 100px;
+    // background: #303030;
+    // /* margin: 1px; */
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // font-size: 60px;
+    // font-family: "Rock Salt", cursive;
+    // box-shadow: inset 0px 0px 0px 4px #3c3c3c;
+  }
+}

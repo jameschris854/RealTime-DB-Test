@@ -8,32 +8,26 @@
      div{
         margin: 10px 0px 10px 0px;
     }
-    input{
-        margin: 10px 0px 10px 0px;
-    }
 }
 
 .label{
     align-self: flex-start;
+    color: var(--primary-text-color);
 }
 button{
     background-color: transparent;
     border: 1px solid white;
     padding: 10px;
     min-width: 150px;
-    color: white;
+    color: var(--primary-text-color);
     &:hover{
         background-color: rgba(255, 255, 255, 0.322);
     }
 }
 a{
-    color: white;
+    color: var(--primary-text-color);
 }
-input{
-    outline: none;
-    border: none;
-    padding: 3px;
-}
+
 .main-container{
 }
 .homePage{

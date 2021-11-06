@@ -1,12 +1,12 @@
-body{
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(255, 107, 107);
+:root{
+  --primary-bg-color:rgb(0, 0, 0) ;
+  --primary-text-color:#ffff;
+  animation-name: primary-text-color;
+  animation-duration: 4s;
 }
-a{
-  color: black;
-  text-decoration: none;
+
+@keyframes primary-text-color {
+  0% {--primary-bg-color:'black'}
+  50% {--primary-bg-color:'red'}
+  100% {--primary-bg-color:'green'}
 }

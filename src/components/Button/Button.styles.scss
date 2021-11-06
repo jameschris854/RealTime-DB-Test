@@ -1,0 +1,15 @@
+.button-container {
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 10px;
+    min-width: 150px;
+    color: var(--primary-text-color);
+    text-align: center;
+    &:hover{
+        background-color: rgba(255, 255, 255, 0.322);
+    }
+    a {
+        color: var(--primary-text-color);
+        text-decoration: none;
+    }
+}

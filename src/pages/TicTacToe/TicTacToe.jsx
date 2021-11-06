@@ -15,6 +15,9 @@ import firebase, {
 import { v4 as uuidv4 } from "uuid";
 import { useParams, useHistory, useLocation } from "react-router-dom";
 import "./TicTacToe.style.scss";
+import Button from "../../components/Button/Button.Component";
+import Tile from "../../components/Tile/Tile.Component";
+import Input from "../../components/Input/Input.Component";
 
 const TicTacToe = () => {
   
@@ -141,15 +144,15 @@ const TicTacToe = () => {
     <>
       {getName ? (
                 <>
-                  <input
+                  <Input
                   type="text"
                   onChange={(e) => setJoinName(e.target.value)}
                   value={joinName} />
-                  <button onClick={() => {
+                  <Button handleClick={() => {
                     setGetName(false) 
                     console.log(joinId.split(":")[1]);
                     handleJoinGame(joinId.split(":")[1],joinName)
-                    }}>join game</button>
+                    }}>join game</Button>
                 </>
             ) : 
             gameData && sessionData && sessionData.player1 ? (
@@ -158,17 +161,9 @@ const TicTacToe = () => {
             <div className="player">
               {sessionData && sessionData.player1 && sessionData.player1.name}
             </div>
-            <div className="tile-container">
-              {gameData &&
-                gameData.map((item, key) => (
-                  <div
-                    className={`tile ${checkTile(key)}`}
-                    key={key}
-                    onClick={() => updateTile(key)}
-                  >
-                    <div>{item}</div>
-                  </div>
-                ))}
+            <div className="tile-wrapper">
+              {gameData && <Tile data={gameData} checkTile={checkTile} updateTile={updateTile} />
+               }
             </div>
             <div className="player">
               {sessionData && sessionData.player2 && sessionData.player2.name}
@@ -176,11 +171,11 @@ const TicTacToe = () => {
           </div>
           {role === "host" ? (
             <div className="game-controls">
-              <button onClick={() => leaveRoom(roomId,player)}>quit</button>
-              <button onClick={() => resetGameHandler()}>reset</button>
+              <Button handleClick={() => leaveRoom(roomId,player)}>quit</Button>
+              <Button handleClick={() => resetGameHandler()}>reset</Button>
             </div>
           ) : (
-            <button onClick={() => leaveRoom(roomId,player)}>Leave Game</button>
+            <Button handleClick={() => leaveRoom(roomId,player)}>Leave Game</Button>
           )}
           <div className="share-code" onClick={() => {navigator.clipboard.writeText(window.location.host+'/game/:'+roomId)}}>
             {window.location.host}/game/:{roomId}

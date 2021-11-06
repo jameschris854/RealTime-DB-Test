@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
+import Button from "../../components/Button/Button.Component";
+import Input from "../../components/Input/Input.Component";
+import Title from "../../components/Title/Title.Component";
 import "./HomePage.styles.scss";
 
 const HomePage = () => {
   const [inputId, setInputId] = useState("");
-  const [name, setName] = useState(""); 
-  const [name2, setName2] = useState(""); 
+  const [name, setName] = useState("");
+  const [name2, setName2] = useState("");
   const [roomId] = useState()
   let history = useHistory();
 
   const handleJoinGame = () => {
-    history.push("/game/:" + inputId,{name:name2,fromHome:true});
+    history.push("/game/:" + inputId, { name: name2, fromHome: true });
   };
 
   const handleText = (val) => {
@@ -19,12 +22,12 @@ const HomePage = () => {
 
   return (
     <div className='main-container'>
-      <div style={{textAlign:'center'}}>Tic Tac Toe</div>
+      <Title>Tic Tac Toe</Title>
       <div className="homePage">
         <div className="create-game container">
           <div className="label">Enter Name</div>
           <div>
-            <input
+            <Input
               type="text"
               onChange={(e) => setName(e.target.value)}
               value={name}
@@ -32,9 +35,9 @@ const HomePage = () => {
           </div>
           <div className="label">Create Game</div>
           <div>
-            <button >
-              <Link 
-              style={{pointerEvents: roomId? 'none' :'auto'}}
+            <Button >
+              <Link
+                style={{ pointerEvents: roomId ? 'none' : 'auto' }}
                 to={{
                   pathname: `/game`,
                   state: { name: name },
@@ -42,24 +45,24 @@ const HomePage = () => {
               >
                 Start New Game
               </Link>
-            </button>
+            </Button>
           </div>
         </div>
 
         <div className="join-game container">
           <div className="label">Enter Name</div>
-          <input
+          <Input
             type="text"
             onChange={(e) => setName2(e.target.value)}
             value={name2}
           />
           <div className="label">Enter Code</div>
-          <input
+          <Input
             type="text"
             onChange={(e) => handleText(e.target.value)}
             value={inputId}
           />
-          <button onClick={handleJoinGame}>join game</button>
+          <Button handleClick={handleJoinGame}>join game</Button>
         </div>
       </div>
     </div>
