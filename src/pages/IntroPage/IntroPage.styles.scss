@@ -1,0 +1,20 @@
+.introVector{
+    fill : green;
+    height:200px;
+     width:200px;
+}
+
+.main-container-intro{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    div{
+        color: var(--primary-text-color);
+        font-size: 60px;
+    }
+    .play-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

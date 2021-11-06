@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg  viewBox="0 0 1400 980" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" >
+	<g transform="matrix(5.601431369781494, 0, 0, 5.601431369781494, 98.44294066302928, -167.37303344643496)">
+		<!-- <linearGradient id="gradient-1" gradientUnits="userSpaceOnUse" x1="54.4817" y1="66.4817" x2="177.5183" y2="189.5183">
+			<stop offset="0" />
+			<stop offset="0.1787" style="stop-color:#81C138" />
+			<stop offset="0.3518" style="stop-color:#75BC3A" />
+			<stop offset="0.5226" style="stop-color:#62B53B" />
+			<stop offset="0.6921" style="stop-color:#47AB3E" />
+			<stop offset="0.8588" style="stop-color:#249F42" />
+			<stop offset="1" style="stop-color:#009245" />
+		</linearGradient> -->
+		<g transform="matrix(1, 0, 0, 1, 0, 0)">
+			<g transform="matrix(1, 0, 0, 1, 0, 0)">
+				<path d="M 203 128 A 87 87 0 0 1 116 215 A 87 87 0 0 1 29 128 A 87 87 0 0 1 116 41 A 87 87 0 0 1 203 128 Z" class="st7" style="fill: url('#gradient-1');" transform="matrix(1, 0, 0, 1, -16.19389533996582, -11.041292190551758)" />
+				<path d="M107.6,175.1c-2.3,1.6-4.6,0.7-4.6-2.2V97.4c0-2.8,2.3-3.8,4.6-2.2l52.1,37c2.3,1.6,2.2,4.3-0.1,6L107.6,175.1z" transform="matrix(1, 0, 0, 1, -20.19389533996582, -14.041292190551758)" style="opacity: 0.15;" />
+				<path class="st3" d="M100.6,168.1c-2.3,1.6-4.6,0.7-4.6-2.2V90.4c0-2.8,2.3-3.8,4.6-2.2l52.1,37c2.3,1.6,2.2,4.3-0.1,6&#10;&#9;&#9;&#9;&#9;&#9;&#9;L100.6,168.1z" style="fill: rgb(255, 255, 255);" transform="matrix(1, 0, 0, 1, -16.19389533996582, -11.041292190551758)" />
+			</g>
+		</g>
+	</g>
+</svg>

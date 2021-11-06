@@ -1,9 +1,11 @@
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import Button from "../../components/Button/Button.Component";
 import Input from "../../components/Input/Input.Component";
 import Title from "../../components/Title/Title.Component";
 import "./HomePage.styles.scss";
+import Play from './play.svg'
 
 const HomePage = () => {
   const [inputId, setInputId] = useState("");
@@ -19,6 +21,7 @@ const HomePage = () => {
   const handleText = (val) => {
     setInputId(val);
   };
+  const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
 
   return (
     <div className='main-container'>
@@ -33,9 +36,19 @@ const HomePage = () => {
               value={name}
             />
           </div>
-          <div className="label">Create Game</div>
-          <div>
-            <Button >
+              
+            <Button style={{position:'relative'}}>
+              <div style={{height:40,position:'absolute',left:-5,top:-10}}>
+            <motion.div
+             transition={transition}
+             initial={{scale: 500.0,}}
+             animate={{scale:1}}
+             exit={{scale: 500.0}}
+             style={{padding:0,margin:0}}
+             >
+              <Play style={{height:40}} />
+            </motion.div>
+            </div>
               <Link
                 style={{ pointerEvents: roomId ? 'none' : 'auto' }}
                 to={{
@@ -43,11 +56,10 @@ const HomePage = () => {
                   state: { name: name },
                 }}
               >
-                Start New Game
+                New Game
               </Link>
             </Button>
           </div>
-        </div>
 
         <div className="join-game container">
           <div className="label">Enter Name</div>

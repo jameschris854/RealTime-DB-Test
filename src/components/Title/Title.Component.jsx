@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { useState } from "react/cjs/react.development";
 import "./Title.styles.scss";
 
-const Title = ({ children }) => {
+const Title = ({ children,style }) => {
   const [title, setTitle] = useState("");
   let [index, setIndex] = useState(0);
   let [blink,setBlink] = useState(true)
   useEffect(() => {
     let str = children.split("");
-    if(str.length-1 < index){
+    if(str.length-1 < index-1){
         setIndex(0)
         setTitle('')
     }
@@ -35,7 +35,7 @@ const Title = ({ children }) => {
   }, [blink]);
   
 
-  return <div className="Title-container">
+  return <div className="Title-container" style={{...style}}>
       {title === ''? ' ': title}{blink === true ? '|' : ''}
       </div>
 };

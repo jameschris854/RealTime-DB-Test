@@ -5,6 +5,9 @@
     min-width: 150px;
     color: var(--primary-text-color);
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     &:hover{
         background-color: rgba(255, 255, 255, 0.322);
     }
