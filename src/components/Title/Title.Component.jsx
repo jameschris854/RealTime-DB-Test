@@ -1,42 +1,36 @@
-import React, { useEffect } from "react";
-import { useState } from "react/cjs/react.development";
+import React, { useEffect,useState } from "react";
 import "./Title.styles.scss";
 
-const Title = ({ children,style }) => {
+const Title = ({children,style}) => {
   const [title, setTitle] = useState("");
-  let [index, setIndex] = useState(0);
-  let [blink,setBlink] = useState(true)
+  const [index, setIndex] = useState(0);
   useEffect(() => {
+    animateText()
+  }, []);
+
+  const animateText = () => {
     let str = children.split("");
-    if(str.length-1 < index-1){
+    let i = 0
+    let text = ''
+    
+    setInterval(() => {
+      if(str.length-1 < i){
         setIndex(0)
         setTitle('')
+        text = ''
+        i = 0
     }
-      const textInterval = setInterval(() => {
-        setTitle(title + str[index]);
-        setIndex(index + 1);
-      }, 1000);
+      console.log(index,title);
+      text = text+str[i]
+      setTitle(text);
+      i++
+    }, 1000);
 
-    return () => {
-        clearInterval(textInterval);
-      };
-  }, [index,children,title]);
-
-  useEffect(() => {
-    console.log(blink);
-      const blinkinterval = setInterval(() => {
-        blink === true ? setBlink(false) : setBlink(true)
-    }, 300);
-
-    return () => {
-        console.log('clearing blink');
-        clearInterval(blinkinterval);
-      };
-  }, [blink]);
+  }
   
 
-  return <div className="Title-container" style={{...style}}>
-      {title === ''? ' ': title}{blink === true ? '|' : ''}
+  return <div className="Title-container" style={{...style}} >
+      {title === ''? ' ': title}{ true ? '|' : ''}
       </div>
 };
 

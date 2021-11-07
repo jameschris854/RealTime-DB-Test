@@ -14,23 +14,22 @@ const IntroPage = () => {
     history.push("/home");
   };
   return (
-    <div className="main-container-intro">
-      <Title style={{ fontSize: "100px", minHeight: "100px" }}>
-        Tic Tac Toe
-      </Title>
+    <motion.div
+    initial={{scale:0,translateY:-200}}
+    animate={{scale:1,translateY:0}}
+    exit={{opacity:0}}
+    transition={transition}
+    className="main-container-intro">
+      <Title style={{ fontSize: "100px", minHeight: "100px" }}>TIC TAC TOE</Title>
       <div className="play-container">
         <div>Play</div>
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          transition={transition}
-          exit={{scale: 100.0,}}
-        >
+        <div>
           <Link to="/home">
             <Play className="introVector" />
           </Link>
-        </motion.div>
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

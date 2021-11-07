@@ -24,8 +24,13 @@ const HomePage = () => {
   const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
 
   return (
-    <div className='main-container'>
-      <Title>Tic Tac Toe</Title>
+    <motion.div
+    initial={{scale:0.5,translateY:200}}
+    animate={{scale:1,translateY:0}}
+    exit={{scale:0,translateY:-200}}
+    transition={transition}
+     className='main-container'>
+      <Title>TIC TAC TOE</Title>
       <div className="homePage">
         <div className="create-game container">
           <div className="label">Enter Name</div>
@@ -39,15 +44,9 @@ const HomePage = () => {
               
             <Button style={{position:'relative'}}>
               <div style={{height:40,position:'absolute',left:-5,top:-10}}>
-            <motion.div
-             transition={transition}
-             initial={{scale: 500.0,}}
-             animate={{scale:1}}
-             exit={{scale: 500.0}}
-             style={{padding:0,margin:0}}
-             >
+            <div>
               <Play style={{height:40}} />
-            </motion.div>
+            </div>
             </div>
               <Link
                 style={{ pointerEvents: roomId ? 'none' : 'auto' }}
@@ -77,7 +76,7 @@ const HomePage = () => {
           <Button handleClick={handleJoinGame}>join game</Button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
