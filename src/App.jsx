@@ -7,9 +7,10 @@ import {
   Route,
   useLocation
 } from "react-router-dom";
-import TicTacToe from "./pages/TicTacToe/TicTacToe";
+import TicTacToe from "./games/TicTacToe/TicTacToe";
 import { AnimatePresence } from "framer-motion";
 import IntroPage from "./pages/IntroPage/IntroPage.component";
+import Test from "./games/Test/Test";
 
 
 const App = () => {
@@ -38,6 +39,11 @@ const App = () => {
             exact 
             path="/game/"
             render={() => <TicTacToe />} 
+            />
+             <Route 
+            exact 
+            path="/test"
+            render={() => <Test />} 
             />
           </Switch>
       </AnimatePresence>
