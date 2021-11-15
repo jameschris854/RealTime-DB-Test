@@ -41,8 +41,7 @@ const App = () => {
             render={() => <TicTacToe />} 
             />
              <Route 
-            exact 
-            path="/test"
+            path="/test/:param"
             render={() => <Test />} 
             />
           </Switch>
