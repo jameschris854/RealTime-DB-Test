@@ -11,6 +11,7 @@ import TicTacToe from "./games/TicTacToe/TicTacToe";
 import { AnimatePresence } from "framer-motion";
 import IntroPage from "./pages/IntroPage/IntroPage.component";
 import Test from "./games/Test/Test";
+import Pong from "./games/Pong/Pong";
 
 
 const App = () => {
@@ -43,6 +44,10 @@ const App = () => {
              <Route 
             path="/test/:param"
             render={() => <Test />} 
+            />
+             <Route 
+            path="/pong"
+            render={() => <Pong />} 
             />
           </Switch>
       </AnimatePresence>

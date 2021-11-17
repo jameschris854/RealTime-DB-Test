@@ -38,17 +38,36 @@ const Test = () => {
   },[player])
 
   function logKey(e) {
+    let sensitivity = 15
+    console.log(e.code);
     if(e.code === 'KeyW'){
       let elmnt = document.querySelector(`.draggable-div${player}`)
-      console.log(`${e.code}`,elmnt.style.top,elmnt.style.top.split('px')[0]);
-      let pos4= `${((elmnt.style.top.split('px')[0]*1)) + 1}px`
-      elmnt.style.top = pos4
-      joinGame(db,'test','abcd',{pos1:1,pos2:0,pos3:500,pos4:elmnt.style.top.split('px')[0]*1})
+      let top= `${((elmnt.style.top.split('px')[0]*1)) - sensitivity}`*1
+      let left= `${((elmnt.style.left.split('px')[0]*1))}`*1
+      elmnt.style.top = top+'px'
+      updateGame(db,'test','abcd',{player,coordinates:{pos1:top,pos2:left}})
+    }else if(e.code === 'KeyS'){
+      let elmnt = document.querySelector(`.draggable-div${player}`)
+      let top= `${((elmnt.style.top.split('px')[0]*1)) + sensitivity}`*1
+      let left= `${((elmnt.style.left.split('px')[0]*1))}`*1
+      elmnt.style.top = top+'px'
+      updateGame(db,'test','abcd',{player,coordinates:{pos1:top,pos2:left}})
+    }else if(e.code === 'KeyA'){
+      let elmnt = document.querySelector(`.draggable-div${player}`)
+      let top= `${((elmnt.style.top.split('px')[0]*1))}`*1
+      let left= `${((elmnt.style.left.split('px')[0]*1)) - sensitivity}`*1
+      elmnt.style.left = left+'px'
+      updateGame(db,'test','abcd',{player,coordinates:{pos1:top,pos2:left}})
+    }else if(e.code === 'KeyD'){
+      let elmnt = document.querySelector(`.draggable-div${player}`)
+      let top= `${((elmnt.style.top.split('px')[0]*1))}`*1
+      let left= `${((elmnt.style.left.split('px')[0]*1)) + sensitivity}`*1
+      elmnt.style.left = left+'px'
+      updateGame(db,'test','abcd',{player,coordinates:{pos1:top,pos2:left}})
     }
   }
 
   useEffect(() => {
-    console.log(player1_coordinates,player2_coordinates,player);
     if( player === '1' ){
         var pos =  player2_coordinates
         console.log(pos);

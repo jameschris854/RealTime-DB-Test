@@ -1,12 +1,12 @@
 :root{
-  --primary-bg-color:rgb(0, 0, 0) ;
+  --primary-bg-color:rgb(255 129 129) ;
   --primary-text-color:#ffff;
   animation-name: primary-text-color;
   animation-duration: 4s;
 }
 
 @keyframes primary-text-color {
-  0% {--primary-bg-color:'black'}
+  0% {--primary-bg-color:'rgb(255 129 129)'}
   50% {--primary-bg-color:'red'}
   100% {--primary-bg-color:'green'}
 }
