@@ -1,4 +1,24 @@
-#pong-canvas{
+body{
+  display: block;
+  justify-content: unset;
+  align-items: unset;
+  background-color: var(--primary-bg-color);
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.pong-container{
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+
+}
+
+.canvas{
   width: 500;
   height: 500;
+  position: absolute;
+  top: 100px;
+  left: 200px;
 }
